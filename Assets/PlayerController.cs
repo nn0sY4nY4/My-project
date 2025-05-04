@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _joystick;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] TextMeshProUGUI _forceText;
+    [SerializeField] TextMeshProUGUI forceText;
 
     private void FixedUpdate()
     {
@@ -21,15 +21,15 @@ public class PlayerController : MonoBehaviour
         }
     }
     public int health = 0;
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Friend")
-    //    {
-    //        Friend friend = collision.gameObject.GetComponent<Friend>();
-    //        int healthFriend = friend._health;
-    //        health += healthFriend;
-    //        forceText.text = health.ToString();
-    //        Destroy(collision.gameObject);
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Friend")
+        {
+            Friend friend = collision.gameObject.GetComponent<Friend>();
+            int healthFriend = friend._health;
+            health += healthFriend;
+            forceText.text = health.ToString();
+            Destroy(collision.gameObject);
+        }
+    }
 }
