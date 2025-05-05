@@ -8,6 +8,9 @@ public class MoveCamera : MonoBehaviour
     public Vector3 offset;
     void Start()
     {
+        offset.z = -12;
+        offset.y = 7;
+        Camera.main.fieldOfView = 44;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void FixedUpdate()
